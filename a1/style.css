@@ -8,6 +8,7 @@
     --lightFont: white;
     --darkFont: black;
     --borderRadius: 15px;
+    --inputItemWidth: 100px;
 }
 
 body {
@@ -24,6 +25,11 @@ h2 {
     text-align: center;
     color: var(--accentColor);
     font-family: 'Indie Flower', cursive;
+}
+
+a {
+    text-decoration: none;
+    color: var(--darkFont)
 }
 
 .header {
@@ -73,7 +79,6 @@ hamburger {
     text-align: center;
     padding-top: 8px;
     padding-bottom: 8px;
-    text-decoration: none;
     color: var(--accentColor);
 }
 
@@ -138,6 +143,8 @@ hamburger {
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
+    display: flex;
+    flex-direction: column-reverse;
 }
 
 .banner-image-smaller {
@@ -167,7 +174,7 @@ hamburger {
     width: 100%;
     min-height: 30vh;
     background-attachment: fixed;
-    background-position: center center;
+    background-position: center -290px;
     background-repeat: no-repeat;
     background-size: cover;
     text-align: center;
@@ -183,8 +190,6 @@ hamburger {
 .scroll-down-arrow-wrapper {
     bottom: 0;
     width: 100%;
-    position: absolute;
-    text-align: center;
     padding-bottom: 16px;
 }
 
@@ -213,6 +218,12 @@ hamburger {
     min-width: 400px;
 }
 
+.gallery {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 .gallery>* {
     padding-left: 8px;
     padding-right: 8px;
@@ -230,20 +241,23 @@ hamburger {
 }
 
 .gallery a {
-    text-decoration: none;
     text-align: center;
     min-width: 100%;
 }
 
 .gallery-img-1,
 .gallery-img-2,
-.gallery-img-3 {
+.gallery-img-3,
+.gallery-img-4,
+.gallery-img-5,
+.gallery-img-6 {
     padding-left: 8px;
     padding-right: 8px;
     background-origin: content-box;
     background-position: center center;
     background-repeat: no-repeat;
     background-size: cover;
+    width: 400px !important;
 }
 
 .gallery-img-1 {
@@ -258,8 +272,22 @@ hamburger {
     background-image: url("../../media/gallery-3.jpg");
 }
 
+.gallery-img-4 {
+    background-image: url("../../media/coffee-beans.jpg");
+}
+
+.gallery-img-5 {
+    background-image: url("../../media/barista.jpg");
+}
+
+.gallery-img-6 {
+    background-image: url("../../media/cafe.jpg");
+}
+
 .gallery p {
     text-align: justify;
+    padding-left: 16px;
+    padding-right: 16px
 }
 
 footer {
@@ -288,12 +316,9 @@ footer {
     padding-top: 36px;
 }
 
-.shop-gallery a {
-    text-decoration: none;
-}
-
 .shop-item {
     min-width: 400px;
+    max-width: 400px;
 }
 
 .shop-item div {
@@ -331,7 +356,8 @@ footer {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-around;
+    align-items: center;
     padding: 32px;
 }
 
@@ -339,13 +365,9 @@ footer {
     width: 500px;
 }
 
-.product-wrapper img div {
-    padding-left: 16px;
-    padding-right: 16px;
-}
-
-.product-form {
-    padding-left: 8px;
+.product-wrapper>* {
+    padding-right: 64px;
+    padding-left: 64px;
 }
 
 .radio-wrapper {
@@ -392,7 +414,7 @@ input[type="radio"] {
 
 input[type="number"] {
     background-color: var(--primaryColor);
-    width: 100px;
+    width: var(--inputItemWidth);
     height: 38px;
     display: table-cell;
     text-align: center;
@@ -417,7 +439,7 @@ input::-webkit-inner-spin-button {
 
 .increment {
     background-color: var(--primaryColor);
-    width: 100px;
+    width: var(--inputItemWidth);
     height: 40px;
     display: table-cell;
     text-align: center;
@@ -437,6 +459,40 @@ input::-webkit-inner-spin-button {
 .increment:hover {
     background-color: var(--accentColor);
     color: white;
+}
+
+input[type="submit"] {
+    background-color: var(--primaryColor);
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    width: var(--inputItemWidth);
+    height: 40px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+    font-size: 16px;
+}
+
+input[type="submit"]:hover {
+    background-color: var(--accentColor);
+    color: var(--lightFont)
+}
+
+.submit-wrapper {
+    display: table;
+    padding-top: 16px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 form>* {
