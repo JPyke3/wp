@@ -69,17 +69,24 @@
             <div class="product-form">
                 <form>
                     <input type="hidden" id="coffee" name="coffee" value="coffee">
-                    <div class="radio-wrapper">
-                        <h2>Choose your Coffee type</h1>
-                        <input type="radio" id="espresso" name="productType" value="espresso" checked>
-                        <input type="radio" id="latte" name="productType" value="latte">
-                        <input type="radio" id="cappuccino" name="productType" value="cappuccino">
-                        <label for="espresso" class="option espresso">Espresso</label>
-                        <label for="latte" class="option latte">Latte</label>
-                        <label for="cappuccino" class="option cappuccino">Cappuccino</label>
-                        <h2>How many would you like?</h1>
-                        <input type="number" id="quantity" name="quantity" min="1" max="100">
-                    </div>
+                    <h2>Choose your Coffee type</h1>
+                        <div class="radio-wrapper">
+                            <input type="radio" id="espresso" name="productType" value="espresso" checked>
+                            <input type="radio" id="latte" name="productType" value="latte">
+                            <input type="radio" id="cappuccino" name="productType" value="cappuccino">
+                            <label for="espresso" class="option espresso">Espresso</label>
+                            <label for="latte" class="option latte">Latte</label>
+                            <label for="cappuccino" class="option cappuccino">Cappuccino</label>
+                        </div>
+                        <h2>How many would you like?</h2>
+                        <div class="quantity">
+                            <label class="increment increment-add" for="add">+</label>
+                            <input type="button" id="add">
+                            <input type="number" id="quantity" name="quantity" min="1" max="100">
+                            <input type="button" id="subtract">
+                            <label class="increment increment-subtract" for="subtract">-</label>
+                        </div>
+                        <input type="submit">
                 </form>
             </div>
         </div>

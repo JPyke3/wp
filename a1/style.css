@@ -7,6 +7,7 @@
     --accentColor: rgba(72, 51, 48, 1);
     --lightFont: white;
     --darkFont: black;
+    --borderRadius: 15px;
 }
 
 body {
@@ -338,7 +339,7 @@ footer {
     width: 500px;
 }
 
-.product-wrapper>img div {
+.product-wrapper img div {
     padding-left: 16px;
     padding-right: 16px;
 }
@@ -364,9 +365,80 @@ input[type="radio"] {
     vertical-align: middle;
 }
 
+.espresso {
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+}
+
+.cappuccino {
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+}
+
 #espresso:checked:checked~.espresso,
 #latte:checked:checked~.latte,
 #cappuccino:checked:checked~.cappuccino {
     color: var(--lightFont);
     background-color: var(--accentColor);
+}
+
+.quantity {
+    display: table;
+    flex-direction: row;
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+}
+
+input[type="number"] {
+    background-color: var(--primaryColor);
+    width: 100px;
+    height: 38px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+    -moz-appearance: textfield;
+    outline: none;
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+}
+
+input[type="button"] {
+    display: none;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+.increment {
+    background-color: var(--primaryColor);
+    width: 100px;
+    height: 40px;
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.increment-add {
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+}
+
+.increment-subtract {
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+}
+
+.increment:hover {
+    background-color: var(--accentColor);
+    color: white;
+}
+
+form>* {
+    text-align: start !important;
 }
