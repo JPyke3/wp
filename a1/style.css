@@ -22,6 +22,7 @@ h1,
 h2 {
     text-align: center;
     color: var(--accentColor);
+    font-family: 'Indie Flower', cursive;
 }
 
 .header {
@@ -243,6 +244,21 @@ hamburger {
     text-align: justify;
 }
 
+footer {
+    text-align: center;
+}
+
+.social-icons {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.social-icons svg {
+    margin: 8px;
+    fill: var(--accentColor);
+}
+
 
 /* Shop Page Styles */
 
@@ -253,12 +269,16 @@ hamburger {
     justify-content: space-evenly;
 }
 
+.shop-gallery a {
+    text-decoration: none;
+}
+
 .shop-item {
     min-width: 400px;
 }
 
 .shop-item div {
-    height: 500px;
+    height: 400px;
 }
 
 .shop-img {
