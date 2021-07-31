@@ -64,41 +64,41 @@
 
     <main style="padding-top: 80px;">
         <div class="banner-image-smallest">
-            <h1>Signature Coffee</h1>
+            <h1>Our Products</h1>
         </div>
-        <div class="product-wrapper">
-            <img src="../../media/gallery-1.jpg" />
-            <div class="product-form">
-                <h1>Order a Coffee</h1>
-                <form action="https://titan.csit.rmit.edu.au/~e54061/wp/testproduct.php" method="post">
-                    <input type="hidden" id="coffee" name="product" value="coffee">
-                    <h2>Choose your Coffee type</h1>
-                        <div class="radio-wrapper">
-                            <input type="radio" id="espresso" name="variant" value="espresso" checked>
-                            <input type="radio" id="latte" name="variant" value="latte">
-                            <input type="radio" id="cappuccino" name="variant" value="cappuccino">
-                            <label for="espresso" class="option espresso">Espresso</label>
-                            <label for="latte" class="option latte">Latte</label>
-                            <label for="cappuccino" class="option cappuccino">Cappuccino</label>
-                        </div>
-                        <h2>How many would you like?</h2>
-                        <div class="quantity">
+        <div class="shop-gallery">
+            <?php
 
-                            <input type="button" name="subtract" value="subtract" id="subtract">
-                            <label class="increment increment-subtract" for="subtract">-</label>
+            session_start();
 
-                            <input type="number" id="qty" name="qty" min="1" max="100" value="1">
-                            <label class="increment increment-add" for="add">+</label>
-                            <input type="button" name="add" value="add" id="add">
+            // Helper function for splitting the CSV via tabs instead of commas
+            function str_callback($n)
+            {
+                return str_getcsv($n, "\t");
+            }
 
-                        </div>
-                        <div class="submit-wrapper">
-                            <input type="submit" value="Buy">
-                        </div>
-                </form>
-            </div>
+            // Read prices.txt and map it to a 2D Array
+            $file = "./prices.txt";
+            $csv = file_get_contents($file);
+            $products = array_map("str_callback", explode(PHP_EOL, $csv));
+
+            // Remove the title from the product array
+            array_shift($products);
+
+            $_SESSION['products'] = $products;
+
+            foreach ($products as $key => $product) : ?>
+
+                <a href="product.php?id=<?php echo $product[1];  ?>">
+                    <div class="shop-item">
+                        <div class=<?php echo "shop-img" . ++$key ?>></div>
+                        <h1><?php echo $product[2]; ?></h1>
+                        <p><?php echo $product[3]; ?></p>
+                    </div>
+                </a>
+
+            <?php endforeach; ?>
         </div>
-
     </main>
 
     <footer>

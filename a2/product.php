@@ -18,12 +18,14 @@
     <link id='stylecss' type="text/css" rel="stylesheet" href="style.css?t=<?= filemtime("style.css"); ?>">
     <script src='../wireframe.js'></script>
 
-    <!-- Student JS -->
+    <!-- Student JS (From A1B) -->
     <script src='./index.js'></script>
+
+    <!-- Student JS (From A2) -->
+    <script src='./script.js'></script>
 </head>
 
 <body>
-
     <header>
         <div class="header">
             <h1 class="site-title">Kaffee Express</h1>
@@ -63,33 +65,63 @@
 
 
     <main style="padding-top: 80px;">
+        <?php
+        // Initialize session
+        session_start();
+
+        // Check if either the product array is not in the session or if the ID doesn't exist
+        if (empty($_SESSION['products']) or empty($_GET['id'])) {
+            header("Location: shop.php");
+        }
+
+        // Retrieve Product array from session
+        $products = $_SESSION['products'];
+
+        // Declare product variable
+        $product;
+
+        // Go through the product session array to find a product matching the ID
+        foreach ($products as $prod) {
+            if ($prod[1] == $_GET['id']) {
+                $product = $prod;
+            }
+        }
+
+        // If we couldn't find a product in the array with the ID passed to this page
+        if ($product == null) {
+            header("Location: shop.php");
+        }
+
+        ?>
         <div class="banner-image-smallest">
-            <h1>Signature Coffee</h1>
+            <h1><?php echo $product[2] ?></h1>
         </div>
         <div class="product-wrapper">
-            <img src="../../media/gallery-1.jpg" />
+
+
+
+            <img src="../../media/gallery-<?php echo $product[0] ?>.jpg" />
             <div class="product-form">
-                <h1>Order a Coffee</h1>
+                <h1><?php echo $product[2] ?></h1>
                 <form action="https://titan.csit.rmit.edu.au/~e54061/wp/testproduct.php" method="post">
                     <input type="hidden" id="coffee" name="product" value="coffee">
-                    <h2>Choose your Coffee type</h1>
+                    <h2>Choose the type</h1>
                         <div class="radio-wrapper">
-                            <input type="radio" id="espresso" name="variant" value="espresso" checked>
-                            <input type="radio" id="latte" name="variant" value="latte">
-                            <input type="radio" id="cappuccino" name="variant" value="cappuccino">
-                            <label for="espresso" class="option espresso">Espresso</label>
-                            <label for="latte" class="option latte">Latte</label>
-                            <label for="cappuccino" class="option cappuccino">Cappuccino</label>
+                            <input type="radio" id="<?php echo $product[5] ?>" name="variant" value="<?php echo $product[5] ?>" checked>
+                            <label for="<?php echo $product[5] ?>" class="option leftmost"><?php echo $product[5] ?></label>
+                            <input type="radio" id="<?php echo $product[6] ?>" name="variant" value="<?php echo $product[6] ?>">
+                            <label for="<?php echo $product[6] ?>" class="option centered"><?php echo $product[6] ?></label>
+                            <input type="radio" id="<?php echo $product[7] ?>" name="variant" value="<?php echo $product[7] ?>">
+                            <label for="<?php echo $product[7] ?>" class="option rightmost"><?php echo $product[7] ?></label>
                         </div>
                         <h2>How many would you like?</h2>
                         <div class="quantity">
 
-                            <input type="button" name="subtract" value="subtract" id="subtract">
+                            <input type="button" name="subtract" value="subtract" id="subtract" onClick="decrement()">
                             <label class="increment increment-subtract" for="subtract">-</label>
-
                             <input type="number" id="qty" name="qty" min="1" max="100" value="1">
                             <label class="increment increment-add" for="add">+</label>
-                            <input type="button" name="add" value="add" id="add">
+                            <input type="button" name="add" value="add" id="add" onClick="increment()">
 
                         </div>
                         <div class="submit-wrapper">

@@ -397,17 +397,14 @@ input[type="radio"] {
     border-bottom-right-radius: var(--borderRadius);
 }
 
-#leftmost:checked:checked~.leftmost,
-#centered:checked:checked~.centered,
-#rigthmost:checked:checked~.rightmost {
-    color: var(--lightFont);
-    background-color: var(--accentColor);
+input[type="radio"]:checked+label {
+    color: var(--lightFont)!important;
+    background-color: var(--accentColor)!important;
 }
 
 .quantity {
     display: table;
     flex-direction: row;
-    width: 100%;
     justify-content: center;
     align-items: center;
 }
