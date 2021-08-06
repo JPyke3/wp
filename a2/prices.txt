@@ -1,4 +1,4 @@
 ID	Product	Name	Desc	Price	Type 1	Type 2	Type 3
 1	coffee	Signature Coffee	The staple of the cafe, you can't go wrong here	100	Espresso	Latte	Cappuccino
 2	brownie	Grandma's Best Brownies	Grandma makes the best brownies! Come and grab one of your favorites!	200	Chocolate	Vanilla	Blueberry
-3	hotchoc	Very Warm Chocolate	This is an absolute essential for any visit to the Cafe, come and grab a cuppa!	150	Caramel	Chcoolate	Vanilla
+3	hotchoc	Very Warm Chocolate	This is an absolute essential for any visit to the Cafe, come and grab a cuppa!	150	Caramel	Chocolate	Vanilla
