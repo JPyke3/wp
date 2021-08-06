@@ -33,34 +33,35 @@
     </header>
 
     <nav>
-        <div class="navigation">
-            <div class="navigation-icon">
-                <label class="navigation-label">
-                    <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                </label>
+    <div class="navigation">
+      <div class="navigation-icon">
+        <label class="navigation-label">
+          <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+        </label>
+      </div>
+    </div>
+    <hamburger style="display: none;">
+      <div class="hamburger-wrapper">
+        <div class="menu">
+          <div class="navigation-icon">
+            <label class="navigation-close-label">
+              <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+            </label>
+          </div>
+          <div class="menu-content">
+            <h1>Navigation</h1>
+            <div class="nav-buttons">
+              <a class="nav-btn" href="./index.php">Home</a>
+              <a class="nav-btn" href="./shop.php">Products</a>
+              <a class="nav-btn" href="./about.php">About Us</a>
+              <a class="nav-btn" href="./cart.php">Shopping Cart</a>
             </div>
+          </div>
         </div>
-        <hamburger style="display: none;">
-            <div class="hamburger-wrapper">
-                <div class="menu">
-                    <div class="navigation-icon">
-                        <label class="navigation-close-label">
-                            <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                        </label>
-                    </div>
-                    <div class="menu-content">
-                        <h1>Navigation</h1>
-                        <div class="nav-buttons">
-                            <a class="nav-btn" href="./index.php">Home</a>
-                            <a class="nav-btn" href="./shop.php">Products</a>
-                            <a class="nav-btn" href="./about.php">About Us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blankspace"></div>
-            </div>
-        </hamburger>
-    </nav>
+        <div class="blankspace"></div>
+      </div>
+    </hamburger>
+  </nav>
 
 
 
@@ -80,6 +81,8 @@
         // Declare product variable
         $product;
 
+        $successMessage = false;
+
         // Go through the product session array to find a product matching the ID
         foreach ($products as $prod) {
             if ($prod[1] == $_GET['id']) {
@@ -92,19 +95,35 @@
             header("Location: shop.php");
         }
 
+        if ($_SERVER["REQUEST_METHOD"] == "POST") {
+            require("post-validation.php");
+            //print_r($_POST);
+            if (checkProduct($_POST["product"], $_POST["variant"]) == true) {
+                // Add to cart
+                if (empty($_SESSION["cart"])) {
+                    $_SESSION["cart"] = array();
+                }
+                array_push($_SESSION["cart"], array($_POST["product"], $_POST["variant"], $_POST["qty"], $product));
+                $successMessage = true;
+            } else {
+                // Redirect away because something has been tampered with
+                header("Location: shop.php");
+            }
+
+            print_r($_SESSION["cart"]);
+        }
+
         ?>
         <div class="banner-image-smallest">
             <h1><?php echo $product[2] ?></h1>
         </div>
         <div class="product-wrapper">
-
-
-
+            
             <img src="../../media/gallery-<?php echo $product[0] ?>.jpg" />
             <div class="product-form">
                 <h1><?php echo $product[2] ?></h1>
-                <form action="https://titan.csit.rmit.edu.au/~e54061/wp/testproduct.php" method="post">
-                    <input type="hidden" id="coffee" name="product" value="coffee">
+                <form method="post">
+                    <input type="hidden" id="coffee" name="product" value="<?php echo $product[1] ?>">
                     <h2>Choose the type</h1>
                         <div class="radio-wrapper">
                             <input type="radio" id="<?php echo $product[5] ?>" name="variant" value="<?php echo $product[5] ?>" checked>
@@ -125,7 +144,11 @@
 
                         </div>
                         <div class="submit-wrapper">
-                            <input type="submit" value="Buy">
+                            <input type="submit" value="Add to Cart">
+                        </div>
+                        <div>
+                            <p><?php if ($successMessage) { echo "Item successfully added to cart!"; };
+                                ?></p>
                         </div>
                 </form>
             </div>

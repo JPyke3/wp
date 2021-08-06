@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+// Put your PHP functions and modules here
+
+?>
+
 <!DOCTYPE html>
 <html lang='en'>
 
@@ -63,66 +70,12 @@
 
 
 
-  <main>
-    <div class="banner-image">
-      <div class="scroll-down-arrow-wrapper">
-        <svg class="scroll-down-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2048 2048" className={classes.svg} focusable="false">
-          <path d="M1939 467l90 90-1005 1005L19 557l90-90 915 915 915-915z" />
-        </svg>
-      </div>
+  <main style="padding-top: 80px;">
+    <div class="banner-image-smallest">
+      <h1>Checkout</h1>
     </div>
     <div class="content-block">
-      <h1 style="padding-bottom: 16px;">
-        Our Products
-      </h1>
-
-      <div class="product-gallery">
-        <a href="product.php">
-          <div class="gallery">
-            <div class="gallery-img-1"></div>
-            <h2>Signature Coffee</h2>
-          </div>
-        </a>
-        <a href="product.php">
-          <div class="gallery">
-            <div class="gallery-img-2"></div>
-            <h2>Grandma's Best Brownies</h2>
-          </div>
-        </a>
-        <a href="product.php">
-          <div class="gallery">
-            <div class="gallery-img-3"></div>
-            <h2>A Very Warm Chocolate </h2>
-          </div>
-        </a>
-      </div>
-    </div>
-    <div class="banner-image-smaller">
-    </div>
-    <div class="content-block">
-      <h1 style="padding-bottom: 16px;">
-        Our Assurance to Quality
-      </h1>
-
-      <div class="product-gallery">
-        <div class="gallery">
-          <h2>The Finest Coffee Beans</h2>
-          <div class="gallery-img-4"></div>
-          <p>Here at Kaffee express, we only use the highest quality beans to achieve that high quality taste you come to expect</p>
-        </div>
-        <div class="gallery">
-          <h2>The Most Experienced Baristas</h2>
-          <div class="gallery-img-5"></div>
-          <p>Kaffee Express hires only the the most experienced in the industry. Nowhere else in the world will you fine the most elite baristas in the whole world.</p>
-        </div>
-        <div class="gallery">
-          <h2>The Best Atmosphere in Town</h2>
-          <div class="gallery-img-6"></div>
-          <p>If you are looking for the best place in all of town to just chill out and hang with friends, then Kaffee express is the place to be. We take pride in having a very comfortable environment that everyone can feel safe and communal in.</p>
-        </div>
-      </div>
-    </div>
-    <div class="banner-image-smaller-2">
+     
     </div>
   </main>
 

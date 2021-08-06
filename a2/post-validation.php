@@ -1,18 +1,21 @@
 <?php
 
-/*
-Tip: In files that need to perform POST processing, include this file with this code:
+require("tools.php");
 
-  if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    require("post-validation.php");
-}
-*/
+function checkProduct($id, $type)
+{
+  // Re-read the product array from the latest CSV
+  $products = readProducts();
 
-  $firstname = '';
-  $firstnameError = '';
-
-  if (isset($_POST['firstname'])) {
-    // ... your code here ...
+  // Loop through the array and find a matching ID
+  foreach ($products as $prod) {
+    if ($prod[1] == $id) {
+      if ($prod[5] == $type or $prod[6] == $type or $prod[7] == $type) {
+        return true;
+      } else {
+        return false;
+      }
+    }
   }
-
-?>
+  return false;
+}

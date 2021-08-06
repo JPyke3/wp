@@ -31,34 +31,35 @@
     </header>
 
     <nav>
-        <div class="navigation">
-            <div class="navigation-icon">
-                <label class="navigation-label">
-                    <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                </label>
+    <div class="navigation">
+      <div class="navigation-icon">
+        <label class="navigation-label">
+          <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+        </label>
+      </div>
+    </div>
+    <hamburger style="display: none;">
+      <div class="hamburger-wrapper">
+        <div class="menu">
+          <div class="navigation-icon">
+            <label class="navigation-close-label">
+              <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+            </label>
+          </div>
+          <div class="menu-content">
+            <h1>Navigation</h1>
+            <div class="nav-buttons">
+              <a class="nav-btn" href="./index.php">Home</a>
+              <a class="nav-btn" href="./shop.php">Products</a>
+              <a class="nav-btn" href="./about.php">About Us</a>
+              <a class="nav-btn" href="./cart.php">Shopping Cart</a>
             </div>
+          </div>
         </div>
-        <hamburger style="display: none;">
-            <div class="hamburger-wrapper">
-                <div class="menu">
-                    <div class="navigation-icon">
-                        <label class="navigation-close-label">
-                            <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                        </label>
-                    </div>
-                    <div class="menu-content">
-                        <h1>Navigation</h1>
-                        <div class="nav-buttons">
-                            <a class="nav-btn" href="./index.php">Home</a>
-                            <a class="nav-btn" href="./shop.php">Products</a>
-                            <a class="nav-btn" href="./about.php">About Us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blankspace"></div>
-            </div>
-        </hamburger>
-    </nav>
+        <div class="blankspace"></div>
+      </div>
+    </hamburger>
+  </nav>
 
 
 

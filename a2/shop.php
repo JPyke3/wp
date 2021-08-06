@@ -31,34 +31,35 @@
     </header>
 
     <nav>
-        <div class="navigation">
-            <div class="navigation-icon">
-                <label class="navigation-label">
-                    <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                </label>
+    <div class="navigation">
+      <div class="navigation-icon">
+        <label class="navigation-label">
+          <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+        </label>
+      </div>
+    </div>
+    <hamburger style="display: none;">
+      <div class="hamburger-wrapper">
+        <div class="menu">
+          <div class="navigation-icon">
+            <label class="navigation-close-label">
+              <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
+            </label>
+          </div>
+          <div class="menu-content">
+            <h1>Navigation</h1>
+            <div class="nav-buttons">
+              <a class="nav-btn" href="./index.php">Home</a>
+              <a class="nav-btn" href="./shop.php">Products</a>
+              <a class="nav-btn" href="./about.php">About Us</a>
+              <a class="nav-btn" href="./cart.php">Shopping Cart</a>
             </div>
+          </div>
         </div>
-        <hamburger style="display: none;">
-            <div class="hamburger-wrapper">
-                <div class="menu">
-                    <div class="navigation-icon">
-                        <label class="navigation-close-label">
-                            <input type="button" hidden="true" onclick="toggleHamburgerMenu()">
-                        </label>
-                    </div>
-                    <div class="menu-content">
-                        <h1>Navigation</h1>
-                        <div class="nav-buttons">
-                            <a class="nav-btn" href="./index.php">Home</a>
-                            <a class="nav-btn" href="./shop.php">Products</a>
-                            <a class="nav-btn" href="./about.php">About Us</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="blankspace"></div>
-            </div>
-        </hamburger>
-    </nav>
+        <div class="blankspace"></div>
+      </div>
+    </hamburger>
+  </nav>
 
 
 
@@ -71,20 +72,13 @@
 
             session_start();
 
-            // Helper function for splitting the CSV via tabs instead of commas
-            function str_callback($n)
-            {
-                return str_getcsv($n, "\t");
-            }
+            // Import Tools Library
+            require("tools.php");
 
-            // Read prices.txt and map it to a 2D Array
-            $file = "./prices.txt";
-            $csv = file_get_contents($file);
-            $products = array_map("str_callback", explode(PHP_EOL, $csv));
+            // Read the products from the CSV
+            $products = readProducts();
 
-            // Remove the title from the product array
-            array_shift($products);
-
+            // Write the products to the session for use on the next page
             $_SESSION['products'] = $products;
 
             foreach ($products as $key => $product) : ?>

@@ -474,6 +474,26 @@ input[type="submit"] {
     border-top-left-radius: var(--borderRadius);
     border-bottom-left-radius: var(--borderRadius);
     font-size: 16px;
+    color: var(--darkFont);
+}
+
+button {
+    background-color: var(--primaryColor);
+    border-top-style: none;
+    border-right-style: none;
+    border-left-style: none;
+    border-bottom-style: none;
+    width: 200px;
+    height: 40px;
+    display: table-cell;
+    text-align: center;
+    color: var(--darkFont);
+    vertical-align: middle;
+    border-top-right-radius: var(--borderRadius);
+    border-bottom-right-radius: var(--borderRadius);
+    border-top-left-radius: var(--borderRadius);
+    border-bottom-left-radius: var(--borderRadius);
+    font-size: 16px;
 }
 
 input[type="submit"]:hover {
@@ -494,4 +514,28 @@ form {
 
 form>* {
     text-align: start !important;
+}
+
+.shopping-cart-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    flex-basis: 50%;
+}
+
+.shopping-cart-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.shopping-cart-text-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
