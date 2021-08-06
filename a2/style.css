@@ -359,6 +359,7 @@ footer {
     justify-content: space-around;
     align-items: center;
     padding: 32px;
+    text-align: center;
 }
 
 .product-wrapper>img {
@@ -477,16 +478,17 @@ input[type="submit"] {
     color: var(--darkFont);
 }
 
-button {
+.checkout-button {
     background-color: var(--primaryColor);
     border-top-style: none;
     border-right-style: none;
     border-left-style: none;
     border-bottom-style: none;
     width: 200px;
-    height: 40px;
+    height: 50px;
     display: table-cell;
     text-align: center;
+    vertical-align: center;
     color: var(--darkFont);
     vertical-align: middle;
     border-top-right-radius: var(--borderRadius);
@@ -538,4 +540,40 @@ form>* {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+}
+
+.checkout-wrapper {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap-reverse;
+    gap: 64px;
+}
+
+.shopping-cart-item-checkout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.checkout-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: flex-start;
+    align-content: stretch;
+}
+
+.checkout-form>label {
+    width: 100%;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.checkout-form>label>input {
+    width: 100%
 }

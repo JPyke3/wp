@@ -76,11 +76,11 @@ session_start();
     </div>
     <div class="content-block">
       <div class="shopping-cart-wrapper">
-        <hr style="width: 100%;">
+        <hr style="width: 100%;" />
         <?php
         $total = 0;
         foreach ($_SESSION["cart"] as $item) {
-        $total = $total+(int)$item[3][4];
+          $total = $total + ((int)$item[3][4] * (int)$item[2]);
         ?>
           <div class="shopping-cart-item">
             <img style="object-fit: cover;" height="100px" width="100px" src="../../media/gallery-<?php echo $item[3][0] ?>.jpg" />
@@ -88,18 +88,20 @@ session_start();
               <h2 style="max-width: 250px;"><?php echo $item[3][2] ?></h2>
               <p style="max-width: 250px;"><?php echo $item[3][3] ?></p>
             </div>
-            <div>
+            <div style="min-width: 150px;">
               <p>Price: $<?php echo number_format((float)$item[3][4] / 100, 2); ?></p>
               <p>Type: <?php echo $item[1] ?></p>
+              <p>Quantity: <?php echo $item[2] ?></p>
+              <p>Total: $<?php echo number_format((float)$item[3][4] * (float)$item[2] / 100, 2); ?></p>
             </div>
           </div>
-          <hr style="width: 100%;">
+          <hr style="width: 100%;" />
         <?php } ?>
         <div>
           <b>Total Price: $<?php echo number_format((float)$total / 100, 2); ?></b>
         </div>
         <hr style="width: 100%;">
-        <button>Proceed to checkout</button>
+        <a class="checkout-button" href="./checkout.php"><p style="vertical-align: middle;">Proceed to checkout</p></a>
       </div>
     </div>
   </main>
