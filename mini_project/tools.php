@@ -1,45 +1,56 @@
-<?php 
-  session_start();
+<?php
+session_start();
 
-  $users = [
-    'Alice' => 'passwordA',
-    'Bob' => 'passwordB',
-    'Carol' => 'passwordC',
-  ];
-  
-  function logIO() {
-    global $users;
-    if (isset($_SESSION['user'])) {
-/* 
-  To Do: log them out 
-*/
-    } else {
-/* 
-  To Do:
-  1) check for a name and password in POST
-  2) if they exist, check for a match in the user / password array
-  3) if there is a match log them in
-*/
+$users = [
+  'Alice' => 'passwordA',
+  'Bob' => 'passwordB',
+  'Carol' => 'passwordC',
+];
+
+$endMessage = "";
+
+function logIO()
+{
+  global $users;
+  global $endMessage;
+  if (isset($_SESSION['user'])) {
+    session_unset();
+  } else {
+    $username = $_POST["username"];
+    $password = $_POST["password"];
+    foreach ($users as $key => $user) {
+      $endMessage .= "user check " . $key;
+      if ($key == $username && $user == $password) {
+        // The user matches both the key and the password in the array
+        $_SESSION["user"] = $key;
+      } else {
+        // There was no match
+        // TODO: Insert error here
+      }
     }
   }
+}
 
-function navContent() {
-  if(isset($_SESSION['user'])) {
+function navContent()
+{
+  if (isset($_SESSION['user'])) {
+    global $endMessage;
+    $endMessage .= "user check session " . $_SESSION['user'];
     return $_SESSION['user'];
   } else {
     return "";
   }
 }
 
-  function topModule($title) {
-/* 
+function topModule($title)
+{
+  /* 
   To Do: print the top of the page with a page title
 */
-  }
+}
 
-  function endModule() {
-/* 
-  To Do: print the end of the page
-*/
-  }
-?>
+function endModule()
+{
+  global $endMessage;
+  return $endMessage;
+}

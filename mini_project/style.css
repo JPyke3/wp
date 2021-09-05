@@ -8,7 +8,7 @@ body {
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-    row-gap: 2px;
+    row-gap: 4px;
 }
 
 main {
@@ -16,16 +16,20 @@ main {
 }
 
 header {
-    display: initial;
+    display: flex;
+    align-items: center;
 }
 
 nav {
     width: 100%;
+    align-content: flex-end;
+    text-align: end;
 }
 
 top-header {
     display: flex;
     flex-direction: column;
+    column-gap: 4px;
 }
 
 #order {
