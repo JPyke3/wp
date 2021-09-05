@@ -1,5 +1,8 @@
 /* Note to self: Mobile first design, ie single column layout as default */
 
+
+/* Styles for general formatting of the page */
+
 p {
     margin: 0 0 0 0;
 }
@@ -32,6 +35,9 @@ top-header {
     column-gap: 4px;
 }
 
+
+/* Styles for the formatting of the form */
+
 #order {
     display: flex;
     flex-direction: column;
@@ -50,6 +56,7 @@ textarea {
 }
 
 @media only screen and (min-width: 800px) {
+    /* Styles for general formatting of the page */
     top-header {
         display: flex;
         flex-direction: row;
@@ -57,6 +64,7 @@ textarea {
     header {
         min-width: fit-content;
     }
+    /* Styles for the formatting of the form */
     #order {
         display: table;
         width: 800px;

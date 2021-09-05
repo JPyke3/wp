@@ -1,16 +1,22 @@
 <?php
 include_once("tools.php");
 
+// If the page has detected a new login (denoted by a new post request), trigger the login/logout function
 if (isset($_POST["username"]) && isset($_POST["password"])) {
   logIO();
 }
 
+
+// If the page has detected a logout post request, trigger the login/logout function
 if (isset($_POST["logout"])) {
   logIO();
 }
 
+// Initialize helper variables
 $shownIfUser;
 $buttonText;
+
+// If statement that checks if there is a user logged in, this will then assign CSS styles to render or not render specfic components of the page
 if (!isset($_SESSION['user'])) {
   $shownIfUser = "display: none;";
   $hiddenIfUser = "";
