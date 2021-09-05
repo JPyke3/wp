@@ -1,0 +1,71 @@
+/* Note to self: Mobile first design, ie single column layout as default */
+
+p {
+    margin: 0 0 0 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    row-gap: 2px;
+}
+
+main {
+    flex-grow: 1;
+}
+
+header {
+    display: initial;
+}
+
+nav {
+    width: 100%;
+}
+
+top-header {
+    display: flex;
+    flex-direction: column;
+}
+
+#order {
+    display: flex;
+    flex-direction: column;
+    row-gap: 4px;
+}
+
+p>label {
+    display: flex;
+    flex-direction: column;
+}
+
+p>input,
+textarea {
+    width: 100%;
+    padding: 0;
+}
+
+@media only screen and (min-width: 800px) {
+    top-header {
+        display: flex;
+        flex-direction: row;
+    }
+    header {
+        min-width: fit-content;
+    }
+    #order {
+        display: table;
+        width: 800px;
+    }
+    p {
+        display: table-row;
+    }
+    p>label {
+        display: table-cell;
+        padding-bottom: 16px;
+    }
+    p>input,
+    textarea {
+        display: table-cell;
+    }
+}
